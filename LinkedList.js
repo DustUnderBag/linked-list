@@ -47,7 +47,8 @@ export class LinkedList {
     pop() {
         if(this.size === 0) return;
 
-        if(this.size === 1) {
+        //If list has only ONE element
+        if(this.#head.nextNode == null) {
             this.#head = null;
             return;
         }
@@ -58,6 +59,30 @@ export class LinkedList {
         }
         tmp.nextNode = null;
 
+    }
+
+    contains(value) {
+        if(this.size === 0) return false;
+
+        let tmp = this.#head;
+        /*
+        Traverser cannot go past last node, and stops if it 
+        finds the matching value.
+        */
+        while( tmp.nextNode != null && tmp.value !== value) {
+            tmp = tmp.nextNode;
+        }
+
+        console.log("Checking: ", tmp.value);
+        return tmp.value === value;
+        /*
+        Case 1: Reaches last node, can't find target value
+          - returns false;
+        Case 2: Reaches last node, finds target value.
+          - returns true;
+        Case 3: Hasn't reached last node, finds target value.
+          - returns true;
+        */
     }
 
 }
@@ -79,3 +104,6 @@ list.pop();
 console.log("Head: ", list.head);
 console.log("Tail: ", list.tail);
 console.log("Size: ", list.size);
+
+console.log("Has G: ", list.contains("G"));
+console.log("Has D: ", list.contains("D"));
