@@ -31,26 +31,26 @@ export class LinkedList {
         return count;
     }
 
-    prepend(value) {
-        //if(this.#head == null)
-        const oldHead = this.#head;
-        this.#head = new Node(value, oldHead);
-    }
-
     append(value) {
        if(this.#head == null) {
         this.prepend(value);
         return;
        }
-
-       let tmp = this.#head;
-       while(tmp.nextNode != null) {
-            tmp = tmp.nextNode;
-        }
-        tmp.nextNode = new Node(value, null);
+       
+       this.tail.nextNode = new Node(value, null);
     }
-}
-const listA = new LinkedList();
-listA.append("A");
+    
+    prepend(value) {
+        this.#head = new Node(value, this.#head);
+    }
 
-console.log(listA.head);
+}
+const list = new LinkedList();
+
+list.prepend("C");
+list.prepend("B");
+list.prepend("A");
+
+console.log("Head: ", list.head);
+console.log("Tail: ", list.tail);
+console.log("Size: ", list.size);
