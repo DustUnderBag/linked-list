@@ -58,7 +58,6 @@ export class LinkedList {
             tmp = tmp.nextNode;
         }
         tmp.nextNode = null;
-
     }
 
     contains(value) {
@@ -85,6 +84,20 @@ export class LinkedList {
         */
     }
 
+    toString() {
+        if(this.#head == null) return "null";
+
+        let tmp = this.#head;
+        let str = `( ${tmp.value} )`
+        while(tmp.nextNode !== null) {
+            tmp = tmp.nextNode;
+            str += ` -> ( ${tmp.value} )`;
+        }
+        str += ` -> null`;
+        return str;
+
+    }
+
 }
 const list = new LinkedList();
 
@@ -101,9 +114,12 @@ list.append("H");
 list.pop();
 list.pop();
 
+/*
 console.log("Head: ", list.head);
 console.log("Tail: ", list.tail);
 console.log("Size: ", list.size);
-
+*/
 console.log("Has G: ", list.contains("G"));
 console.log("Has D: ", list.contains("D"));
+
+console.log(list.toString());
