@@ -100,6 +100,20 @@ export class LinkedList {
         return (tmp.value === value) ? index : null;
     }
 
+    at(index) {
+        if(this.#head == null) return null;
+        if(index > this.size - 1 || index < 0) return null;
+
+        let tmp = this.#head;
+        let step = 0;
+
+        while(tmp.nextNode != null && step < index) {
+            tmp = tmp.nextNode;
+            step++;
+        }
+        return tmp;
+    }
+
     toString() {
         if(this.#head == null) return "null";
 
@@ -149,3 +163,5 @@ console.log("Has D: ", list.contains("D"));
 
 console.log("Find D: ", list.find("D"));
 console.log("Find I: ", list.find("I"));
+
+console.log("Get node at '3': ", list.at(5));
