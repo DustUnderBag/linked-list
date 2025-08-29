@@ -177,47 +177,4 @@ export class LinkedList {
         str += ` -> null`;
         return str;
     }
-
-    
 }
-const list = new LinkedList();
-
-list.prepend("C");
-list.prepend("B");
-list.prepend("A");
-
-list.append("D");
-list.append("E");
-list.append("F");
-list.append("G");
-list.append("H");
-
-list.pop(); // Delete H
-list.pop(); // Delete G
-
-list.append("I");
-list.append("J");
-list.prepend("AA");
-
-list.pop(); // Delete J
-
-
-/*
-console.log("Head: ", list.head);
-console.log("Tail: ", list.tail);
-console.log("Size: ", list.size);
-*/
-
-console.log("Has G: ", list.contains("G"));
-console.log("Has D: ", list.contains("D"));
-
-console.log("Find D: ", list.find("D"));
-console.log("Find I: ", list.find("I"));
-
-console.log("Get node at '3': ", list.at(5));
-
-console.log(list.toString());
-list.removeAt(1);
-console.log(list.toString());
-list.removeAt(5);
-console.log(list.toString());

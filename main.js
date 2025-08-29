@@ -1,4 +1,3 @@
-import { Node } from "./Node.js";
+import { LinkedList } from "./LinkedList";
 
-const testNode = new Node();
-console.log(testNode);
+// example uses class syntax - adjust as necessary
