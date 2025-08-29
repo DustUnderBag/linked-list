@@ -136,6 +136,35 @@ export class LinkedList {
         previous.nextNode =  new Node(value, current);
     }
 
+    removeAt(index) {
+        if(this.#head == null) return;
+
+        if(index <= 0) { 
+            this.#head = this.#head.nextNode;
+            return;
+        }
+
+        if(index >= this.size - 1) {
+            this.pop();
+            return;
+        }
+
+        if(index <= 0) { 
+            this.#head = this.#head.nextNode;
+            return;
+        }
+
+        let previous;
+        let current = this.#head;
+        let step = 0;
+        while(step < index) {
+            previous = current;
+            current = current.nextNode;
+            step++;
+        }
+        previous.nextNode = current.nextNode;
+    }
+
     toString() {
         if(this.#head == null) return "null";
 
@@ -188,5 +217,7 @@ console.log("Find I: ", list.find("I"));
 console.log("Get node at '3': ", list.at(5));
 
 console.log(list.toString());
-list.insertAt("A2B", 5);
+list.removeAt(1);
+console.log(list.toString());
+list.removeAt(5);
 console.log(list.toString());
