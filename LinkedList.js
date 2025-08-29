@@ -84,6 +84,22 @@ export class LinkedList {
         */
     }
 
+    find(value) {
+        if(list.size === 0) return null;
+
+        let tmp = this.#head;
+        let index = 0;
+
+        while(tmp.nextNode !== null ) {
+            if(tmp.value === value) return index;
+
+            tmp = tmp.nextNode;
+            index++;
+        }
+
+        return (tmp.value === value) ? index : null;
+    }
+
     toString() {
         if(this.#head == null) return "null";
 
@@ -95,9 +111,9 @@ export class LinkedList {
         }
         str += ` -> null`;
         return str;
-
     }
 
+    
 }
 const list = new LinkedList();
 
@@ -111,15 +127,25 @@ list.append("F");
 list.append("G");
 list.append("H");
 
-list.pop();
-list.pop();
+list.pop(); // Delete H
+list.pop(); // Delete G
+
+list.append("I");
+list.append("J");
+list.prepend("AA");
+
+list.pop(); // Delete J
+
 
 /*
 console.log("Head: ", list.head);
 console.log("Tail: ", list.tail);
 console.log("Size: ", list.size);
 */
+console.log(list.toString());
+
 console.log("Has G: ", list.contains("G"));
 console.log("Has D: ", list.contains("D"));
 
-console.log(list.toString());
+console.log("Find D: ", list.find("D"));
+console.log("Find I: ", list.find("I"));
