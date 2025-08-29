@@ -114,6 +114,28 @@ export class LinkedList {
         return tmp;
     }
 
+    insertAt(value, index) {
+        if(index <= 0) {
+            this.prepend(value);
+            return;
+        }
+
+        if(index > list.size - 1) {
+            list.append(value);
+            return;
+        }
+
+        let previous;
+        let current = this.#head;
+        let step = 0;
+        while(current.nextNode != null && step < index) { 
+            previous = current;
+            current = current.nextNode;
+            step++;
+        }
+        previous.nextNode =  new Node(value, current);
+    }
+
     toString() {
         if(this.#head == null) return "null";
 
@@ -156,7 +178,6 @@ console.log("Head: ", list.head);
 console.log("Tail: ", list.tail);
 console.log("Size: ", list.size);
 */
-console.log(list.toString());
 
 console.log("Has G: ", list.contains("G"));
 console.log("Has D: ", list.contains("D"));
@@ -165,3 +186,7 @@ console.log("Find D: ", list.find("D"));
 console.log("Find I: ", list.find("I"));
 
 console.log("Get node at '3': ", list.at(5));
+
+console.log(list.toString());
+list.insertAt("A2B", 5);
+console.log(list.toString());
