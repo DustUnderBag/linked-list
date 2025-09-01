@@ -149,11 +149,6 @@ export class LinkedList {
             return;
         }
 
-        if(index <= 0) { 
-            this.#head = this.#head.nextNode;
-            return;
-        }
-
         let previous;
         let current = this.#head;
         let step = 0;
